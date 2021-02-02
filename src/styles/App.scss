@@ -1,0 +1,9 @@
+@import "./Header";
+@import "./JobList";
+@import "./Job";
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap");
+
+body {
+  background: hsl(180, 52%, 96%);
+  font-family: "Spartan", sans-serif;
+}

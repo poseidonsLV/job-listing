@@ -1,0 +1,139 @@
+.jobList-card {
+  min-height: 150px;
+  padding: 20px;
+  box-shadow: 0px 5px 5px 0.1px hsl(180, 8%, 72%);
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.6s;
+}
+.jobList-card:hover {
+  border-left: 4px solid hsl(180, 29%, 50%);
+  transform: scale(1.03);
+}
+
+.left-side {
+  align-items: center;
+  display: flex;
+  max-width: 350px;
+  width: 100%;
+  .job-logo {
+    margin-right: 20px;
+  }
+  .job-header {
+    .job-header-row-1 {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      .job-company {
+        margin-right: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: hsl(180, 29%, 50%);
+      }
+      .job-new,
+      .job-featured {
+        background: hsl(180, 29%, 50%);
+        padding-top: 8px;
+        padding-bottom: 4px;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-right: 10px;
+      }
+      .job-featured {
+        background: hsl(180, 14%, 20%);
+      }
+    }
+  }
+  .job-header-row-2 {
+    .job-position {
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      &:hover {
+        color: hsl(180, 29%, 50%);
+      }
+    }
+  }
+  .job-header-row-3 {
+    display: flex;
+    margin-top: 10px;
+    p {
+      color: hsl(180, 8%, 52%);
+      margin-right: 35px;
+      font-size: 0.7rem;
+    }
+    .job-contract p,
+    .job-location p {
+      position: relative;
+      &::before {
+        content: "";
+        background: hsl(180, 8%, 52%);
+        width: 3px;
+        height: 3px;
+        border-radius: 20px;
+        top: 5px;
+        left: -13px;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.right-side {
+  margin-left: 20px;
+  .job-tags {
+    display: flex;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    p {
+      margin: 10px;
+      font-weight: 700;
+      color: hsl(180, 29%, 50%);
+      background: hsl(180, 31%, 92%);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.25s;
+      padding-top: 10px;
+      padding-bottom: 8px;
+      &:hover {
+        background: hsl(180, 29%, 50%);
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 952px) {
+  .jobList-card {
+    flex-direction: column;
+    text-align: center;
+    .left-side {
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      .job-logo {
+        margin: 15px 0;
+      }
+      .job-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .right-side {
+      margin-left: 0;
+      .job-tags {
+        justify-content: center;
+      }
+    }
+  }
+}
