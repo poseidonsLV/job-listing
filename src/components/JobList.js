@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/App.css";
 import { jobData } from "../data";
 import Job from "./Job";
 function JobList() {
-  const [jobs, setJobs] = useState(jobData);
-  const [filteredJobs, setFilteredJobs] = useState([]);
   const [search, setSearch] = useState(null);
   return (
     <div className="JobList">
@@ -17,9 +15,9 @@ function JobList() {
       </div>
 
       <div className="jobList-cards">
-        {jobs
+        {jobData
           .filter((data) => {
-            if (search == null) return data;
+            if (search === null) return data;
             else if (
               data.position.toLowerCase().includes(search.toLowerCase()) ||
               data.role.toLowerCase().includes(search.toLowerCase()) ||
