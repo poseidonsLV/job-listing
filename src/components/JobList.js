@@ -1,9 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "../styles/App.css";
 import { jobData } from "../data";
 import Job from "./Job";
 function JobList() {
   const [search, setSearch] = useState(null);
+
+  const filteredData = useMemo(() => {
+    if (!search) {
+      return jobData;
+    }
+
+    const lowerCasedSearch = search.toLowerCase();
+
+    return jobData.filter((data) => {
+      const matchesPosition = data.position
+        .toLowerCase()
+        .includes(lowerCasedSearch);
+      const matchesRole = data.role.toLowerCase().includes(lowerCasedSearch);
+
+      if (matchesPosition || matchesRole) {
+        return true;
+      }
+
+      const matchesLanguage = data.languages.some((lang) =>
+        lang.toLowerCase().includes(lowerCasedSearch)
+      );
+
+      if (matchesLanguage) {
+        return true;
+      }
+
+      const matchesTool =
+        data.tool !== undefined &&
+        data.tool.some((tool) => tool.toLowerCase().includes(lowerCasedSearch));
+      return matchesTool;
+    });
+  }, [search]);
+
   return (
     <div className="JobList">
       <div className="filters-container">
@@ -15,43 +48,9 @@ function JobList() {
       </div>
 
       <div className="jobList-cards">
-        {jobData
-          .filter((data) => {
-            if (search === null) return data;
-            else if (
-              data.position.toLowerCase().includes(search.toLowerCase()) ||
-              data.role.toLowerCase().includes(search.toLowerCase()) ||
-              data.languages
-                .map((lang) => lang.toLowerCase())
-                .includes(search.toLowerCase()) ||
-              data.tools
-                .map((tool) => tool.toLowerCase())
-                .includes(search.toLowerCase())
-            ) {
-              return data;
-            }
-            return false;
-          })
-          .map((data) => {
-            return (
-              <Job
-                key={data.id}
-                id={data.id}
-                company={data.company}
-                logo={data.logo}
-                newText={data.new}
-                featured={data.featured}
-                position={data.position}
-                role={data.role}
-                level={data.level}
-                postedAt={data.postedAt}
-                contract={data.contract}
-                location={data.location}
-                languages={data.languages}
-                tools={data.tools}
-              />
-            );
-          })}
+        {filteredData.map((dataset) => (
+          <Job key={dataset.id} {...dataset} />
+        ))}
       </div>
     </div>
   );
