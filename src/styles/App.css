@@ -1,18 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap");
-.header {
-  background: #5ba4a4;
-  height: 120px;
-  background-image: url("../images/bg-header-desktop.svg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-@media (max-width: 952px) {
-  .header {
-    background-image: url("../images/bg-header-mobile.svg") !important;
-  }
-}
-
 .JobList {
   padding: 50px 5px;
   max-width: 80vw;
@@ -22,7 +8,7 @@
 
 .JobList .filters-container {
   position: absolute;
-  top: -30px;
+  top: 20px;
   background: white;
   width: 100%;
   padding: 4px;
@@ -47,6 +33,7 @@
 }
 
 .jobList-cards {
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,7 +132,6 @@
 .left-side .job-header-row-2 .job-position {
   font-weight: 700;
   font-size: 1.1rem;
-  cursor: pointer;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }

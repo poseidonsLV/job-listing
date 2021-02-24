@@ -30,6 +30,7 @@ function JobList() {
             ) {
               return data;
             }
+            return false;
           })
           .map((data) => {
             return (
